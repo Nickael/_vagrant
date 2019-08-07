@@ -1,0 +1,34 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+    config.env.enable
+    config.vm.box = ENV['VG_BOX']
+    config.vm.hostname = ENV['VG_HOSTNAME']
+
+    config.vm.network "public_network"
+    config.vm.synced_folder ENV['VG_SYNCED_FOLDER_ORG'], ENV['VG_SYNCED_FOLDER_DST'], type: "smb",
+    smb_username: ENV['VG_SMB_USERNAME'],
+    smb_password: ENV['VG_SMB_PASSWORD'],
+    mount_options: ["username=" + ENV['VG_SMB_USERNAME'],"password=" + ENV['VG_SMB_PASSWORD']]
+
+    config.vm.provider "hyperv" do |v|
+        v.memory = ENV['VG_MEMORY']
+        v.vmname = ENV['VG_HOSTNAME']
+    end
+
+    config.vm.provision "file", source: "../data/config/gitconfig", destination: "/tmp/gitconfig"
+    config.vm.provision "file", source: "../data/config/bashrc", destination: "/tmp/bashrc"
+    config.vm.provision "file", source: "../data/config/bash_aliases", destination: "/tmp/bash_aliases"
+
+    config.vm.provision "shell", path: "../data/sh/bash.sh"
+    config.vm.provision "shell", path: "../data/sh/default.sh"
+    config.vm.provision "shell", path: "../data/sh/nginx.sh"
+    config.vm.provision "shell", path: "../data/sh/docker.sh"
+    config.vm.provision "shell", path: "../data/sh/docker-compose.sh"
+    config.vm.provision "shell", path: "../data/sh/docker-container.sh"
+
+    config.vm.provision "shell", inline: <<-SHELL
+        ip a | ccze -A
+    SHELL
+end

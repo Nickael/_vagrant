@@ -1,0 +1,6 @@
+**/data/data/
+**/.vagrant/
+**/.idea/
+**/.vscode/
+**/.old*
+**/.env

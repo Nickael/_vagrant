@@ -1,0 +1,16 @@
+alias q='exit'
+alias s='sudo apt update && sudo apt-cache search'
+alias i='sudo apt update && sudo apt install -y'
+alias u='sudo apt update && sudo apt upgrade -y'
+
+alias l="ls"
+alias a="ls -a"
+alias ll="ls -l"
+alias la="ls -la"
+alias x="mv -vf"
+alias c="cp -frv"
+alias web="cd /var/www/"
+
+
+alias b="vi ~/.bashrc"
+alias sb="source ~/.bashrc"
