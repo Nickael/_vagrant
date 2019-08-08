@@ -9,17 +9,17 @@ Vagrant.configure("2") do |config|
     config.vm.network "public_network", auto_config: false
     config.vm.provision "shell",
         run: "always",
-        inline: "ifconfig eth0 10.75.11.172 netmask 255.255.255.0 up"
+        inline: "ifconfig " + ENV["VG_NETWORK_TYPE"] + " " + ENV["VG_STATIC_IP"] +" netmask " + ENV["VG_NETMASK"] + " up"
     config.vm.provision "shell",
         run: "always",
-        inline: "route add default gw 10.75.11.254"
+        inline: "route add default gw " + ENV["VG_GATEWAY"]
 
     config.vm.synced_folder ENV['VG_SYNCED_FOLDER_ORG'], ENV['VG_SYNCED_FOLDER_DST']
 
-    config.vm.provider "hyperv" do |v|
+    config.vm.provider "virtualbox" do |v|
         v.memory = ENV['VG_MEMORY']
         v.name = ENV['VG_HOSTNAME']
-        v.cpus = 1
+        v.cpus = ENV['VG_CPUS']
     end
 
     config.vm.provision "file", source: "../data/config/gitconfig", destination: "/tmp/gitconfig"
