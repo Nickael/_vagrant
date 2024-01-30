@@ -12,6 +12,9 @@ To use this configuration correctly, you need  programs :
 ## Basic installation
 
 ```shell
+vagrant plugin install vagrant-env
+vagrant plugin install vagrant-vbguest
+vagrant vbguest
 vagrant up
 ```
 
