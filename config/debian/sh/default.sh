@@ -1,8 +1,11 @@
-echo "## RUNGING DEFAULT.SH ##"
+#!/bin/bash
 
-apt update
-apt install -y \
-            vim \
+echo '#####################################################'
+echo "##              RUNGING    DEFAULT.SH              ##"
+echo '#####################################################'
+
+apt-get -qq update
+apt-get install -y  --no-install-recommends \
             git \
             curl \
             wget \
@@ -12,7 +15,9 @@ apt install -y \
             cmake \
             gcc \
             gpp \
-            g++
+            g++ \
+            exa
+apt-get clean
 
 # install and conrigure oh-my-zsh for vagrant
 

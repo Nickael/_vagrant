@@ -1,4 +1,8 @@
-echo "## RUNGING BASH.SH ##"
+#!/bin/bash
+
+echo '#####################################################'
+echo "##              RUNGING    BASH.SH                 ##"
+echo '#####################################################'
 
 # copy bash and git config to root user
 

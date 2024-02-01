@@ -24,16 +24,16 @@ Vagrant.configure("2") do |config|
         v.vmname = ENV['VG_HOSTNAME']
     end
 
-    config.vm.provision "file", source: "../data/config/gitconfig", destination: "/tmp/gitconfig"
-    config.vm.provision "file", source: "../data/config/bashrc", destination: "/tmp/bashrc"
-    config.vm.provision "file", source: "../data/config/bash_aliases", destination: "/tmp/bash_aliases"
+    config.vm.provision "file", source: "../../config/centos/config/gitconfig", destination: "/tmp/gitconfig"
+    config.vm.provision "file", source: "../../config/centos/config/bashrc", destination: "/tmp/bashrc"
+    config.vm.provision "file", source: "../../config/centos/config/bash_aliases", destination: "/tmp/bash_aliases"
 
-    config.vm.provision "shell", path: "../data/sh/bash.sh"
-    config.vm.provision "shell", path: "../data/sh/default.sh"
-    config.vm.provision "shell", path: "../data/sh/nginx.sh"
-    config.vm.provision "shell", path: "../data/sh/docker.sh"
-    config.vm.provision "shell", path: "../data/sh/docker-compose.sh"
-    config.vm.provision "shell", path: "../data/sh/docker-container.sh"
+    config.vm.provision "shell", path: "../../config/centos/sh/bash.sh"
+    config.vm.provision "shell", path: "../../config/centos/sh/default.sh"
+    config.vm.provision "shell", path: "../../config/centos/sh/nginx.sh"
+    config.vm.provision "shell", path: "../../config/centos/sh/docker.sh"
+    config.vm.provision "shell", path: "../../config/centos/sh/docker-compose.sh"
+    config.vm.provision "shell", path: "../../config/centos/sh/docker-container.sh"
 
     config.vm.provision "shell", inline: <<-SHELL
         ip a | ccze -A

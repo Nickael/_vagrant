@@ -1,4 +1,8 @@
-echo "## RUNGING DOCKER-CONTAINER.SH ##"
+#!/bin/bash
+
+echo '#####################################################'
+echo "##           RUNGING    DOCKER-CONTAINER.SH        ##"
+echo '#####################################################'
 
 if hash docker 2> /dev/null; then
 
