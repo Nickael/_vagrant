@@ -1,0 +1,33 @@
+#!/bin/bash
+
+echo '#####################################################'
+echo "##              RUNGING    SHELL.SH                ##"
+echo '#####################################################'
+HOME_USER=/home/vagrant
+
+if hash brew 2> /dev/null; then
+    echo '#####################################################'
+    if hash oh-my-posh 2> /dev/null;
+    then
+        brew update && brew upgrade oh-my-posh
+    else
+        brew install jandedobbeleer/oh-my-posh/oh-my-posh
+        sed -i 's/ZSH_THEME/#ZSH_THEME/g' $HOME_USER/.zshrc
+        # printf "eval \"\$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)\"" >> /root/.zshrc
+        if ! grep -q 'oh-my-posh init' "$HOME_USER/.zshrc";
+        then
+            printf "eval \"\$(oh-my-posh init zsh --config 'https://raw.githubusercontent.com/Nickael/ohmyposh.theme/master/.nr.nordic.omp.json')\"" >> $HOME_USER/.zshrc
+        fi
+    fi
+    echo '#####################################################'
+fi
+
+VIM_DOTFILE=$HOME_USER/vim.dotfiles
+
+if [[ -d "${VIM_DOTFILE}" && ! -L "${VIM_DOTFILE}" ]] ;
+then
+    echo '#####################################################'
+    sh $VIM_DOTFILE/install.sh --all --verbose
+    rm -frv $VIM_DOTFILE
+    echo '#####################################################'
+fi

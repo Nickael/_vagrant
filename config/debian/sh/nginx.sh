@@ -11,3 +11,13 @@ apt install -y nginx
 
 systemctl start nginx
 
+# updating hosts
+
+
+cat >> /etc/hosts << EOF
+0.0.0.0 analyst.nra.io
+EOF
+
+echo '#####################################################'
+cat /etc/hosts
+echo '#####################################################'

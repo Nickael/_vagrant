@@ -18,11 +18,11 @@ if hash docker 2> /dev/null; then
 
     # creating mariadb volume
 
-    docker volume create mariadb55_data
-    docker run -d \
-            -p 3306:3306 \
-            --name mariadb55 \
-            -v mariadb55_data:/var/lib/mysql \
-            -e MYSQL_ROOT_PASSWORD=root \
-            mariadb:5.5
+    # docker volume create mariadb55_data
+    # docker run -d \
+    #         -p 3306:3306 \
+    #         --name mariadb55 \
+    #         -v mariadb55_data:/var/lib/mysql \
+    #         -e MYSQL_ROOT_PASSWORD=root \
+    #         mariadb:5.5
 fi

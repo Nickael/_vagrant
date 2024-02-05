@@ -3,8 +3,8 @@
 echo '#####################################################'
 echo "##              RUNGING    DEFAULT.SH              ##"
 echo '#####################################################'
-
 apt-get -qq update
+echo '#####################################################'
 apt-get install -y  --no-install-recommends \
             git \
             curl \
@@ -17,8 +17,11 @@ apt-get install -y  --no-install-recommends \
             gpp \
             g++ \
             exa
+echo '#####################################################'
 apt-get clean
-
+echo '#####################################################'
+apt-get dist-upgrade -y
+echo '#####################################################'
 # install and conrigure oh-my-zsh for vagrant
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/nickael/ohmyzsh/master/tools/install.sh)"
