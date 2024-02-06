@@ -16,7 +16,9 @@ apt-get install -y  --no-install-recommends \
             gcc \
             gpp \
             g++ \
-            exa
+            exa \
+            net-tools
+
 echo '#####################################################'
 apt-get clean
 echo '#####################################################'

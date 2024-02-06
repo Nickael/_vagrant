@@ -8,13 +8,14 @@ if hash docker 2> /dev/null; then
 
     # creating portainer container a docker web manager
 
+    docker volume create portainer_volume
     docker run -d \
             -p 8000:8000 \
             -p 9000:9000 \
             --name portainer \
             --restart always \
             -v /var/run/docker.sock:/var/run/docker.sock \
-            -v /home/vagrant/data/portainer:/data portainer/portainer
+            -v portainer_volume:/data portainer/portainer
 
     # creating mariadb volume
 

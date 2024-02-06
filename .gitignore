@@ -5,3 +5,5 @@
 **/.old*
 **/.env
 **/default
+**/.ruby-lsp/
+**/.fleet/
